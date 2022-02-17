@@ -3,9 +3,11 @@ const express = require('express');
 // # Set: Set port for use by application
 const PORT = process.env.PORT || 3001;
 
+import path from 'path';
+
 // Import: Moduler routes
-const apiRoutes = require('..' + path.sep + '..' + path.sep + 'routes' + path.sep + 'apiRoutes');
-const htmlRoutes = require('..' + path.sep + '..' + path.sep + 'routes' + path.sep + 'htmlRoutes');
+const apiRoutes = require('.' + path.sep + 'routes' + path.sep + 'apiRoutes');
+const htmlRoutes = require('.' + path.sep + 'routes' + path.sep + 'htmlRoutes');
 
 // initialize: app variable by setting it to 'express'
 const app = express();

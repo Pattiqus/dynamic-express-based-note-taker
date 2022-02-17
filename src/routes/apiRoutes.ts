@@ -9,9 +9,12 @@ router.get("/notes", (req, res) => {
     console.info(`New ${req.method} request received for /notes`)
     // # Read: notes file
     fs.readFile("." + path.sep +"db" + path.sep + "db.json", (err, data) => {
-      err ? console.info(err) : res.json(JSON.parse(data));
+      if (err) {
+        console.info(err);
+      } else {
+          res.json(JSON.parse(data));
+      }
     })
-
 });
 
 // # POST: Route for /notes
