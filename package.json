@@ -19,5 +19,8 @@
     "url": "https://github.com/Pattiqus/dynamic-express-based-note-taker/issues"
   },
   "homepage": "https://github.com/Pattiqus/dynamic-express-based-note-taker#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^17.0.18"
+  }
 }
