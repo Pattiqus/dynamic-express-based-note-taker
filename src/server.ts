@@ -4,8 +4,8 @@ const express = require('express');
 const PORT = process.env.PORT || 3001;
 
 // Import: Moduler routes
-const apiRoutes = require('/routes/apiRoutes');
-const htmlRoutes = require('/routes/htmlRoutes');
+const apiRoutes = require('..' + path.sep + '..' + path.sep + 'routes' + path.sep + 'apiRoutes');
+const htmlRoutes = require('..' + path.sep + '..' + path.sep + 'routes' + path.sep + 'htmlRoutes');
 
 // initialize: app variable by setting it to 'express'
 const app = express();
