@@ -2,7 +2,7 @@
 const fs = require("fs");
 const router = require('express').Router;
 import { randomUUID } from 'crypto';
-import path from 'path';
+const path = require('path')
 
 // # GET: Route for /notes
 router.get("/notes", (req, res) => {
