@@ -1,6 +1,6 @@
 // Node Modules
 const path = require('path')
-const router = require('express').router();
+const router = require('express').Router();
 
 // # GET: Route for notes.html
 router.get("/notes", (req, res) => {

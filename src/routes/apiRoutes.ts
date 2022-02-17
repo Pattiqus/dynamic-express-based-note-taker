@@ -1,6 +1,6 @@
 // # Import: Required node modules
 const fs = require("fs");
-const router = require('express').Router;
+const router = require('express').Router();
 import { randomUUID } from 'crypto';
 const path = require('path')
 
