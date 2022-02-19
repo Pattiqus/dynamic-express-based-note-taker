@@ -9,7 +9,7 @@ var uuid = require('..' + path.sep + '..' + path.sep + 'helpers' + path.sep + 'u
 router.get("/notes", function (req, res) {
     console.info("New ".concat(req.method, " request received for /api/notes"));
     // # Read: notes file
-    fs.readFile(".." + path.sep + ".." + path.sep + "db" + path.sep + "db.json", function (err, data) {
+    fs.readFile(path.join(__dirname, '../../db/db.json'), function (err, data) {
         if (err) {
             console.info(err);
         }
@@ -32,7 +32,7 @@ router.post("/notes", function (req, res) {
             id: uuid()
         };
         // # Read: note file
-        fs.readFile((".." + path.sep + ".." + path.sep + "db" + path.sep + "db.json"), "utf-8", function (err, data) {
+        fs.readFile(path.join(__dirname, '../../db/db.json'), "utf-8", function (err, data) {
             if (err) {
                 console.info(err);
             }
@@ -41,7 +41,7 @@ router.post("/notes", function (req, res) {
                 // # Push: new note to db
                 parsedNotes.push(newNote_1);
                 // # Write: New note to file
-                fs.writeFile(".." + path.sep + ".." + path.sep + "db" + path.sep + "db.json", JSON.stringify(parsedNotes), function (err) {
+                fs.writeFile(path.join(__dirname, '../../db/db.json'), JSON.stringify(parsedNotes), function (err) {
                     return err ? console.error(err) : console.log("Success");
                 });
             }
@@ -65,7 +65,7 @@ router.delete("/notes:id", function (req, res) {
     // # De-structure: req.params object to new variable within
     var id = req.params.id;
     // # Read: note file
-    fs.readFile(".." + path.sep + ".." + path.sep + "db" + path.sep + "db.json", "utf-8", function (err, data) {
+    fs.readFile(path.join(__dirname, '../../db/db.json'), "utf-8", function (err, data) {
         var dataParsed = JSON.parse(data);
         if (err) {
             console.info(err);
@@ -80,7 +80,7 @@ router.delete("/notes:id", function (req, res) {
                         return note.id != id;
                     });
                     // # Write: new file with filteredNotes
-                    fs.writeFile(".." + path.sep + ".." + path.sep + "db" + path.sep + "db.json", JSON.stringify(filteredNotes), function (err) {
+                    fs.writeFile(path.join(__dirname, '../../db/db.json'), JSON.stringify(filteredNotes), function (err) {
                         return err ? console.log(err) : console.log('Success');
                     });
                     return res.json("Note #".concat(id, " deleted"));
