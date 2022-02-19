@@ -13,3 +13,5 @@ router.get("*",(req, res) => {
     console.info(`New ${req.method} request received for wildcard`)
     res.sendFile(path.join(__dirname, '..' + path.sep + '..' + path.sep + 'public' + path.sep + 'index.html'))
 });
+
+module.exports = router;

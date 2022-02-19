@@ -35,6 +35,6 @@
     "prettier/prettier": ["error"],
     "prefer-promise-reject-errors": "off",
     "camelcase": "off",
-    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-namespace": "off"
   }
 }
