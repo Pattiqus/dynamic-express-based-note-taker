@@ -3,6 +3,7 @@ const fs = require("fs");
 const router = require('express').Router();
 import { randomUUID } from 'crypto';
 const path = require('path')
+const uuid = require('..' + path.sep + '..' + path.sep + 'helpers' + path.sep + 'uuid.js')
 
 // # GET: Route for /notes
 router.get("/notes", (req, res) => {
@@ -28,7 +29,7 @@ router.post("/notes", (req, res) => {
         const newNote = {
             title,
             text,
-            id: randomUUID(),
+            id: uuid()
         }
     
 
