@@ -3,13 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // # Import: Required node modules
 var fs = require("fs");
 var router = require('express').Router();
-var crypto_1 = require("crypto");
 var path = require('path');
+var uuid = require('..' + path.sep + '..' + path.sep + 'helpers' + path.sep + 'uuid.js');
 // # GET: Route for /notes
 router.get("/notes", function (req, res) {
     console.info("New ".concat(req.method, " request received for /api/notes"));
     // # Read: notes file
-    fs.readFile("." + path.sep + "db" + path.sep + "db.json", function (err, data) {
+    fs.readFile(__dirname, "../../db.json", function (err, data) {
         if (err) {
             console.info(err);
         }
@@ -29,10 +29,10 @@ router.post("/notes", function (req, res) {
         var newNote_1 = {
             title: title,
             text: text,
-            id: (0, crypto_1.randomUUID)(),
+            id: uuid()
         };
         // # Read: note file
-        fs.readFile(("." + path.sep + "db" + path.sep + "db.json"), "utf-8", function (err, data) {
+        fs.readFile(__dirname, "../../db.json", "utf-8", function (err, data) {
             if (err) {
                 console.info(err);
             }

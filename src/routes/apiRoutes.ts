@@ -9,7 +9,7 @@ const uuid = require('..' + path.sep + '..' + path.sep + 'helpers' + path.sep + 
 router.get("/notes", (req, res) => {
     console.info(`New ${req.method} request received for /api/notes`)
     // # Read: notes file
-    fs.readFile("." + path.sep +"db" + path.sep + "db.json", (err, data) => {
+    fs.readFile(__dirname, "../../db.json", (err, data) => {
       if (err) {
         console.info(err);
       } else {
@@ -34,7 +34,7 @@ router.post("/notes", (req, res) => {
     
 
         // # Read: note file
-        fs.readFile(("." + path.sep + "db" + path.sep + "db.json"), "utf-8", (err, data) => {
+        fs.readFile(__dirname ,"../../db.json", "utf-8", (err, data) => {
             if (err) {
                 console.info(err);
             } else {
