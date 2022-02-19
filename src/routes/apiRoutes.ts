@@ -9,9 +9,12 @@ const uuid = require('..' + path.sep + '..' + path.sep + 'helpers' + path.sep + 
 router.get("/notes", (req, res) => {
     console.info(`New ${req.method} request received for /api/notes`)
     // # Read: notes file
-    fs.readFile(path.join(__dirname, "../../db.json"), (err, data) => {
-      if (err) throw err;
-        res.json(JSON.parse(data));
+    fs.readFile(".." + path.sep + ".." + path.sep + "db" + path.sep + "db.json", (err, data) => {
+      if (err) {
+        console.info(err);
+      } else {
+          res.json(JSON.parse(data));
+      }
     })
 });
 
@@ -31,16 +34,18 @@ router.post("/notes", (req, res) => {
     
 
         // # Read: note file
-        fs.readFile(path.join(__dirname, "../../db.json"), "utf-8", (err, data) => {
-            if (err) throw err;
+        fs.readFile((".." + path.sep + ".." + path.sep + "db" + path.sep + "db.json"), "utf-8", (err, data) => {
+            if (err) {
+                console.info(err);
+            } else {
                 const parsedNotes = JSON.parse(data);
                 // # Push: new note to db
                 parsedNotes.push(newNote);
                 // # Write: New note to file
-                fs.writeFile(__dirname ,"../../db.json", JSON.stringify(parsedNotes), (err) => 
+                fs.writeFile(".." + path.sep + ".." + path.sep + "db" + path.sep + "db.json", JSON.stringify(parsedNotes), (err) => 
                     err ? console.error(err) : console.log("Success")
                 )
-            
+            }
     
         })
 
@@ -66,7 +71,7 @@ router.delete("/notes:id", (req, res) => {
     const { id } = req.params;
 
     // # Read: note file
-    fs.readFile(path.join(__dirname, "../../db.json"), "utf-8", (err, data) => {
+    fs.readFile(".." + path.sep + ".." + path.sep + "db" + path.sep + "db.json", "utf-8", (err, data) => {
         const dataParsed = JSON.parse(data);
         if (err) {
             console.info(err)
@@ -81,7 +86,7 @@ router.delete("/notes:id", (req, res) => {
                     });
 
                     // # Write: new file with filteredNotes
-                    fs.writeFile("../../db.json", JSON.stringify(filteredNotes), (err) => 
+                    fs.writeFile(".." + path.sep + ".." + path.sep + "db" + path.sep + "db.json", JSON.stringify(filteredNotes), (err) => 
                     err ? console.log(err) : console.log('Success')
                     );
                     return res.json(`Note #${id} deleted`)
