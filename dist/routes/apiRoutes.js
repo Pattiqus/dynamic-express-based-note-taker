@@ -9,7 +9,7 @@ var uuid = require('..' + path.sep + '..' + path.sep + 'helpers' + path.sep + 'u
 router.get("/notes", function (req, res) {
     console.info("New ".concat(req.method, " request received for /api/notes"));
     // # Read: notes file
-    fs.readFile(__dirname, "../../db.json", function (err, data) {
+    fs.readFile(path.join(__dirname, "../../db.json"), function (err, data) {
         if (err)
             throw err;
         res.json(JSON.parse(data));
@@ -29,7 +29,7 @@ router.post("/notes", function (req, res) {
             id: uuid()
         };
         // # Read: note file
-        fs.readFile(__dirname, "../../db.json", "utf-8", function (err, data) {
+        fs.readFile(path.join(__dirname, "../../db.json"), "utf-8", function (err, data) {
             if (err)
                 throw err;
             var parsedNotes = JSON.parse(data);
@@ -59,7 +59,7 @@ router.delete("/notes:id", function (req, res) {
     // # De-structure: req.params object to new variable within
     var id = req.params.id;
     // # Read: note file
-    fs.readFile(__dirname, "../../db.json", "utf-8", function (err, data) {
+    fs.readFile(path.join(__dirname, "../../db.json"), "utf-8", function (err, data) {
         var dataParsed = JSON.parse(data);
         if (err) {
             console.info(err);
@@ -74,7 +74,7 @@ router.delete("/notes:id", function (req, res) {
                         return note.id != id;
                     });
                     // # Write: new file with filteredNotes
-                    fs.writeFile(__dirname, "../../db.json", JSON.stringify(filteredNotes), function (err) {
+                    fs.writeFile("../../db.json", JSON.stringify(filteredNotes), function (err) {
                         return err ? console.log(err) : console.log('Success');
                     });
                     return res.json("Note #".concat(id, " deleted"));
