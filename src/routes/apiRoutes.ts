@@ -62,7 +62,7 @@ router.post("/notes", (req, res) => {
 });
 
 // # DELETE: Route for /notes
-router.delete("/notes:id", (req, res) => {
+router.delete("/notes/:id", (req, res) => {
     console.info(`New ${req.method} received for ID ${req.params.id} note`);
 
     let filteredNotes = [];

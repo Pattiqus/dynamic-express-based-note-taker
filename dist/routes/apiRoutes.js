@@ -59,7 +59,7 @@ router.post("/notes", function (req, res) {
     }
 });
 // # DELETE: Route for /notes
-router.delete("/notes:id", function (req, res) {
+router.delete("/notes/:id", function (req, res) {
     console.info("New ".concat(req.method, " received for ID ").concat(req.params.id, " note"));
     var filteredNotes = [];
     // # De-structure: req.params object to new variable within
