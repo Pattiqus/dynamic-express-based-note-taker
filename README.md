@@ -33,10 +33,13 @@ The following instructions should be followed for testing of this application:
 ```To test this application, please run "npm run test".```
 
 # Screenshots
-
+- [Landing-Page](./public/assets/img/landing-page-ss.PNG)
+- [Notes-Page](./public/assets/img/note-page-ss.PNG)
+- [Note-Added](./public/assets/img/add-note-ss.PNG)
+- [Note-Deleted](./public/assets/img/delete-page-ss.PNG)
 # Questions
 If you have any qestions regrading the repository or the project please contact: <ul><li>GitHub:  <a href=https://github.com/pattiqus>pattiqus</a></li> <li>Email: <a href=mailto:Patticus.tv@gmail.com>Patticus.tv@gmail.com</a></li><li>LinkedIn: <a href=https://www.linkedin.com/in/patrick-brown-52553410a>Patrick Brown</a></li></ul>
 
 # Links
-<ul><li>GitHub:  <a href=https://github.com/Pattiqus/dynamic-express-based-note-taker>pattiqus</a></li>
-<ul><li>Deployed App:  <a href=https://safe-temple-09707.herokuapp.com/notes>pattiqus</a></li>
+<ul><li>GitHub:  <a href=https://github.com/Pattiqus/dynamic-express-based-note-taker>pattiqus</a></li></ul>
+<ul><li>Deployed App:  <a href=https://safe-temple-09707.herokuapp.com/notes>Dynamic note taker</a></li></ul>
