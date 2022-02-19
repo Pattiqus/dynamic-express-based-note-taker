@@ -10,11 +10,8 @@ router.get("/notes", (req, res) => {
     console.info(`New ${req.method} request received for /api/notes`)
     // # Read: notes file
     fs.readFile(__dirname, "../../db.json", (err, data) => {
-      if (err) {
-        console.info(err);
-      } else {
-          res.json(JSON.parse(data));
-      }
+      if (err) throw err;
+        res.json(JSON.parse(data));
     })
 });
 
@@ -35,17 +32,15 @@ router.post("/notes", (req, res) => {
 
         // # Read: note file
         fs.readFile(__dirname ,"../../db.json", "utf-8", (err, data) => {
-            if (err) {
-                console.info(err);
-            } else {
+            if (err) throw err;
                 const parsedNotes = JSON.parse(data);
                 // # Push: new note to db
                 parsedNotes.push(newNote);
                 // # Write: New note to file
-                fs.writeFile("." + path.sep + "db" + path.sep + "db.json", JSON.stringify(parsedNotes), (err) => 
+                fs.writeFile(__dirname ,"../../db.json", JSON.stringify(parsedNotes), (err) => 
                     err ? console.error(err) : console.log("Success")
                 )
-            }
+            
     
         })
 

@@ -10,12 +10,9 @@ router.get("/notes", function (req, res) {
     console.info("New ".concat(req.method, " request received for /api/notes"));
     // # Read: notes file
     fs.readFile(__dirname, "../../db.json", function (err, data) {
-        if (err) {
-            console.info(err);
-        }
-        else {
-            res.json(JSON.parse(data));
-        }
+        if (err)
+            throw err;
+        res.json(JSON.parse(data));
     });
 });
 // # POST: Route for /notes
@@ -33,18 +30,15 @@ router.post("/notes", function (req, res) {
         };
         // # Read: note file
         fs.readFile(__dirname, "../../db.json", "utf-8", function (err, data) {
-            if (err) {
-                console.info(err);
-            }
-            else {
-                var parsedNotes = JSON.parse(data);
-                // # Push: new note to db
-                parsedNotes.push(newNote_1);
-                // # Write: New note to file
-                fs.writeFile("." + path.sep + "db" + path.sep + "db.json", JSON.stringify(parsedNotes), function (err) {
-                    return err ? console.error(err) : console.log("Success");
-                });
-            }
+            if (err)
+                throw err;
+            var parsedNotes = JSON.parse(data);
+            // # Push: new note to db
+            parsedNotes.push(newNote_1);
+            // # Write: New note to file
+            fs.writeFile(__dirname, "../../db.json", JSON.stringify(parsedNotes), function (err) {
+                return err ? console.error(err) : console.log("Success");
+            });
         });
         // # Return: success with new note in body
         var response = {
