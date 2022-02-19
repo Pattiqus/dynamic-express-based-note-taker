@@ -65,7 +65,7 @@ router.delete("/notes:id", function (req, res) {
     // # De-structure: req.params object to new variable within
     var id = req.params.id;
     // # Read: note file
-    fs.readFile("." + path.sep + "db" + path.sep + "db.json", "utf-8", function (err, data) {
+    fs.readFile(__dirname, "../../db.json", "utf-8", function (err, data) {
         var dataParsed = JSON.parse(data);
         if (err) {
             console.info(err);
@@ -80,7 +80,7 @@ router.delete("/notes:id", function (req, res) {
                         return note.id != id;
                     });
                     // # Write: new file with filteredNotes
-                    fs.writeFile("." + path.sep + "db" + path.sep + "db.json", JSON.stringify(filteredNotes), function (err) {
+                    fs.writeFile(__dirname, "../../db.json", JSON.stringify(filteredNotes), function (err) {
                         return err ? console.log(err) : console.log('Success');
                     });
                     return res.json("Note #".concat(id, " deleted"));
