@@ -6,7 +6,7 @@ const path = require('path')
 
 // # GET: Route for /notes
 router.get("/notes", (req, res) => {
-    console.info(`New ${req.method} request received for /notes`)
+    console.info(`New ${req.method} request received for /api/notes`)
     // # Read: notes file
     fs.readFile("." + path.sep +"db" + path.sep + "db.json", (err, data) => {
       if (err) {
@@ -19,7 +19,7 @@ router.get("/notes", (req, res) => {
 
 // # POST: Route for /notes
 router.post("/notes", (req, res) => {
-    console.info(`New ${req.method} request received for /notes`)
+    console.info(`New ${req.method} request received for /api/notes`)
     // # Request: Body data
     const { title, text } = req.body;
     // # If: required values are input
